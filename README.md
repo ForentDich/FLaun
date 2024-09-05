@@ -1,2 +1,2 @@
-# Mine-Laun
-Minecraft Launcher (C#)
+# FLaun
+Minecraft Launcher for server (C#)
