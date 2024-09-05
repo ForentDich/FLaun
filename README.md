@@ -1,2 +1,2 @@
 # FLaun
-Minecraft Launcher for server (C#)
+Minecraft Launcher for server (WPF)
