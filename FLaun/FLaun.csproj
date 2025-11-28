@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<UseWPF>true</UseWPF>
+		<PublishSingleFile>true</PublishSingleFile>
+		<PublishTrimmed>false</PublishTrimmed>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+		<TrimMode>CopyUsed</TrimMode>
+		<ApplicationIcon>Resources\Icons\flaunIcon.ico</ApplicationIcon>
+		<AssemblyVersion>1.0.10.0</AssemblyVersion>
+		<FileVersion>1.0.10.0</FileVersion>
+		<Copyright>ForentDich</Copyright>
+	</PropertyGroup>
+
+	<ItemGroup>
+    <None Remove="Resources\Background\background.mp4" />
+    <None Remove="Resources\Fonts\Font Awesome 6 Free Solid.otf" />
+    <None Remove="Resources\Icons\flaunIcon.ico" />
+    <None Remove="Resources\Icons\flaunIcon2.ico" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Resources\Background\background.mp4">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		</Content>	
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources/Fonts/Font Awesome 6 Free Solid.otf" />
+	</ItemGroup>
+
+	<ItemGroup>
+
+    <Content Include="Resources\Icons\flaunIcon.ico" />
+    <PackageReference Include="CmlLib.Core" Version="4.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+    <PackageReference Include="SharpCompress" Version="0.37.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\flaunIcon.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

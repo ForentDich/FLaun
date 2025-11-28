@@ -1,0 +1,2 @@
+C:\Code\FLaun\FLaun\bin\Release\net7.0-windows\win-x64\publish\Resources\Background\background.mp4
+C:\Code\FLaun\FLaun\bin\Release\net7.0-windows\win-x64\publish\FLaun.exe

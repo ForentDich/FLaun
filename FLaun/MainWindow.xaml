@@ -1,0 +1,299 @@
+﻿<Window x:Class="FLaun.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FLaun"
+        mc:Ignorable="d"
+        Loaded="MainWindow_Load"
+        Closed="MainWindow_Closed"
+        Background="#101010"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="FLaun" Height="675" Width="1200" WindowStartupLocation="CenterScreen">
+
+    
+    <Grid>
+        <MediaElement Name="videoBackground"
+                      LoadedBehavior="Manual"
+                      UnloadedBehavior="Stop"
+                      Stretch="UniformToFill"
+                      IsHitTestVisible="False"
+                      MediaEnded="videoBackground_MediaEnded"/>
+
+        <Border x:Name ="MainMenuBorder"  MinWidth="270" MaxWidth="270" Width="270" HorizontalAlignment="Center"
+               VerticalAlignment="Center" CornerRadius="12" Padding="20" Margin="0,0,0,0"
+                Visibility="Visible">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0" Color="#BF262029"/>
+                        <GradientStop Offset="1" Color="#BF110E12"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="16" Color="#110E12"/>
+            </Border.Effect>
+
+            <StackPanel>
+
+                <Grid  Margin="9 0 0 12">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="*"/>
+                        <ColumnDefinition  Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="MainMenuNickBlock" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                               Foreground="White" FontFamily="Bahnschrift" FontSize="20" FontWeight="Bold" TextAlignment="Left"
+                               TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+
+                    <Button  x:Name="ProfileButton" Grid.Column="1"  Style="{StaticResource StyleButton_Icon}" 
+                             Content="&#xf304;" FontSize="24" Margin="16 0 0 0"
+                             Click="On_ProfileButton_Click"/>
+                </Grid>
+
+
+
+                <Grid Margin="0 6 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="*"/>
+                        <ColumnDefinition  Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Button x:Name="LaunchButton" Grid.Column="0" Style="{StaticResource StyleButton_1}" Content="Начать игру" FontSize="20"
+                            FontFamily="Bahnschrift" FontWeight="Bold" Height="50" Margin="0 0 0 0"
+                            Click="On_LaunchButton_Click">
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="12" Color="#6a65e7"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Button x:Name="SettingsButton" Grid.Column="1" Style="{StaticResource StyleButton_Icon}" Content="&#xf013;" HorizontalAlignment="Right" 
+                            FontSize="24" Margin="16 0 0 0"
+                            Click="On_SettingsButton_Click">
+                    </Button>
+
+                </Grid>
+
+            </StackPanel>
+
+        </Border>
+
+
+        <Label Margin="0 0 0 26" x:Name="SyncStatusLabel" VerticalAlignment="Bottom" Foreground="White" Content="" FontWeight="DemiBold" FontSize="16" FontFamily="Bahnschrift" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+
+        </Label>
+        <ProgressBar Margin="-4 0 -4 -5" Value="0" Style="{StaticResource ProgressBarStyle}" VerticalAlignment="Bottom" Height="30" x:Name="SyncProgressBar" Minimum="0" Maximum="100"/>
+
+        <Border x:Name ="SettingsMenuBorder"  MinWidth="250" HorizontalAlignment="Center"
+               VerticalAlignment="Center" CornerRadius="12" Padding="20" Margin="0,0,0,0"
+                Visibility="Collapsed">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0" Color="#BF262029"/>
+                        <GradientStop Offset="1" Color="#BF110E12"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="16" Color="#110E12"/>
+            </Border.Effect>
+
+            <StackPanel>
+
+                <Grid  Margin="0 0 0 2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="Auto"/>
+                        <ColumnDefinition  Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label  Grid.Column="0" HorizontalAlignment="Left" Content="Настройки" FontFamily="Bahnschrift" Foreground="White" FontSize="24" FontWeight="SemiBold" Margin="0 0 0 0"
+                            VerticalContentAlignment="Center"/>
+                    <Button x:Name="BackToMainMenuButton" Grid.Column="1"  Style="{StaticResource StyleButton_Icon}" HorizontalAlignment="Right" Content="&#xf00d;" FontSize="26" Margin="0 0 0 0" 
+                            VerticalContentAlignment="Center"
+                             Click="On_BackToMainMenuFromSettingsButton_Click"/>
+                </Grid>
+
+                <Separator Background="#3a333d"/>
+
+                <Label Content="Директория" HorizontalAlignment="Left" FontFamily="Bahnschrift" Foreground="White" FontSize="16" Margin="0 6 0 2"
+                            VerticalContentAlignment="Center"/>
+
+                <Grid  Margin="0 0 0 12" Width="650" Height="35">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition  Width="0.2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="PathTextBox" Grid.Column="0"
+                             FontSize="16" FontWeight="Regular" FontFamily="Bahnschrift" Padding="4 0 2 0"
+                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                             VerticalContentAlignment="Center"
+                             TextWrapping="NoWrap" AcceptsReturn="False" HorizontalScrollBarVisibility="Hidden"
+                             Text="{Binding PathValidator.Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Style="{StaticResource ErrorTextBoxStyle}"
+                             TextChanged="PathTextBox_TextChanged">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4 0 0 4"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <Button Grid.Column="1" x:Name="FileDialogButton" Style="{StaticResource StyleButton_2}" Content="Обзор" Foreground="White" FontSize="16"
+                            FontFamily="Bahnschrift" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Regular" Margin="4 0 0 0"
+                            Click="On_FileDialogButton_Click">
+
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="1" BlurRadius="12" Color="#6a65e7"/>
+                        </Button.Effect>
+                    </Button>
+
+                </Grid>
+
+                <Label Content="Память (ОЗУ)" HorizontalAlignment="Left" FontFamily="Bahnschrift" Foreground="White" FontSize="16" Margin="0 0 0 2"
+                            VerticalContentAlignment="Center"/>
+                <Grid Margin="0 0 0 16">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition  Width="0.1*"/>
+                        <ColumnDefinition  Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="1" x:Name="RamTextBox" Text="{Binding ElementName=RamSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Margin="4 0 -12 0"
+                             TextWrapping="NoWrap" AcceptsReturn="False" FontSize="16" VerticalContentAlignment="Center" FontFamily="Bahnschrift">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4 4 4 4"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Slider Grid.Column="0" x:Name="RamSlider" Maximum="16384" TickPlacement="BottomRight" TickFrequency="1024" IsSnapToTickEnabled ="True" />
+                    <Label Grid.Column="2" Content="МиБ" HorizontalAlignment="Right" FontFamily="Bahnschrift" Foreground="White" FontSize="16" Margin="0 0 0 0"
+                            VerticalContentAlignment="Center"/>
+                </Grid>
+
+                <Separator Background="#29252b"/>
+
+                <Grid  Height="35" Margin="0 12 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button  Grid.Column="1" x:Name="ResetSettingsButton" Style="{StaticResource StyleButton_Icon}" HorizontalAlignment="Right" Content="&#xf2ea;" FontSize="24" Margin="8 0 0 0" 
+                            VerticalContentAlignment="Center"
+                             Click="On_ResetSettingsButton_Click"/>
+
+                    <Button Grid.Column="0" x:Name="SaveSettingsButton" Style="{StaticResource StyleButton_3}" Content="Сохранить" Foreground="White" FontSize="16"
+                            FontFamily="Bahnschrift" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Regular" Margin="0 0 0 0"
+                            Click="On_SaveSettingsButton_Click" IsEnabled="False">
+
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="1" BlurRadius="12" Color="#6a65e7"/>
+                        </Button.Effect>
+                    </Button>
+
+
+                </Grid>
+
+            </StackPanel>
+        </Border>
+
+
+        <Border x:Name ="ProfileMenuBorder"  MinWidth="270" HorizontalAlignment="Center"
+               VerticalAlignment="Center" CornerRadius="12" Padding="20" Margin="0,0,0,0"
+                Visibility="Collapsed">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0" Color="#BF262029"/>
+                        <GradientStop Offset="1" Color="#BF110E12"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="16" Color="#110E12"/>
+            </Border.Effect>
+
+            
+            <StackPanel>
+                       
+                <Grid  Margin="0 0 0 2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="Auto"/>
+                        <ColumnDefinition  Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label  Grid.Column="0" Content="Профили" FontFamily="Bahnschrift" Foreground="White" FontSize="24" FontWeight="SemiBold"
+                            VerticalContentAlignment="Center"/>
+                    <Button x:Name="BackToMainMenuFromProfileButton" Grid.Column="1"  Style="{StaticResource StyleButton_Icon}" HorizontalAlignment="Right" Content="&#xf00d;" FontSize="26" Margin="0 0 0 0" 
+                            VerticalContentAlignment="Center"
+                             Click="On_BackToMainMenuFromProfileButton_Click"/>
+                </Grid>
+
+                <Separator Background="#3a333d"/>
+
+                <TabControl x:Name="ProfileTabControl" Width="300" Height="130" Style="{DynamicResource TabControlStyle}" Padding="16 6 16 0" Margin="0 12 0 12" FontFamily="Bahnschrift" FontSize="16"
+                            SelectedIndex="0">
+
+                    <TabItem x:Name="OfflineTab" Header="Обычный" Width="300" Style="{DynamicResource TabItemStyle}">
+                        <StackPanel>
+                            <Label Content="Никнейм" Foreground="White" FontWeight="Regular" FontSize="18" HorizontalAlignment ="Left"  FontFamily="Bahnschrift"/>
+                            <Grid  Margin="0 0 0 12" Height="35">
+                                <TextBox x:Name="OfflineNicknameTextBox" Grid.Column="0"
+                                         FontSize="18" FontWeight="Regular" FontFamily="Bahnschrift" Padding="4 0 2 0"
+                                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                         VerticalContentAlignment="Center"
+                                         TextWrapping="NoWrap" AcceptsReturn="False" HorizontalScrollBarVisibility="Hidden"
+                                         MaxLength="16"
+                                         Text="{Binding UsernameValidator.Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                         Style="{StaticResource ErrorTextBoxStyle}"
+                                         TextChanged="ProfileTextBox_TextChanged">
+
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </TextBox.Resources>
+
+                                </TextBox>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem>
+
+                </TabControl>
+
+                <Separator Background="#29252b"/>
+                
+                <Button x:Name="SaveProfileButton" Height="35"  Style="{StaticResource StyleButton_3}" Content="Выбрать" FontSize="18"
+                        FontFamily="Bahnschrift" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Regular" Margin="0 12 0 0"
+                        Click="On_SaveProfileButton_Click" IsEnabled="False">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="12" Color="#6a65e7"/>
+                    </Button.Effect>
+                </Button>
+
+            </StackPanel>
+                
+
+
+        </Border>
+
+    </Grid>
+</Window>

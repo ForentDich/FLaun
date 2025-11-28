@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "r5wVxggvkT6XniJYYlLhWGSy+JPdmSBPjLRQf/auuhuWUHy/239fygnbTHri1UmgRs4M2Tib45DeP8Yov8j+3g==",
+  "success": true,
+  "projectFilePath": "C:\\Code\\FLaun\\FLaun\\FLaun.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\forent\\.nuget\\packages\\cmllib.core\\4.0.2\\cmllib.core.4.0.2.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\cmllib.core.commons\\4.0.0\\cmllib.core.commons.4.0.0.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\lzma-sdk\\19.0.0\\lzma-sdk.19.0.0.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\ookii.dialogs.wpf\\5.0.1\\ookii.dialogs.wpf.5.0.1.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\sharpcompress\\0.37.2\\sharpcompress.0.37.2.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\system.threading.tasks.dataflow\\8.0.1\\system.threading.tasks.dataflow.8.0.1.nupkg.sha512",
+    "C:\\Users\\forent\\.nuget\\packages\\zstdsharp.port\\0.8.0\\zstdsharp.port.0.8.0.nupkg.sha512"
+  ],
+  "logs": []
+}

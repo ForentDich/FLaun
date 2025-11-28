@@ -1,0 +1,2 @@
+C:\Code\FLaun\FLaun\publish\FLaun.pdb
+C:\Code\FLaun\FLaun\publish\FLaun.exe

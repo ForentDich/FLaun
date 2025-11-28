@@ -1,0 +1,42 @@
+﻿<Window x:Class="FLaun.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FLaun"
+        mc:Ignorable="d"
+        Title="SplashScreen" Height="250" Width="500"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+
+
+    
+
+
+    <Grid>
+
+        <Border x:Name ="SplashBorder"  MinWidth="450" MaxWidth="450" Width="450" HorizontalAlignment="Center"
+               VerticalAlignment="Center" CornerRadius="12" Padding="20" Margin="0,0,0,0"
+                Visibility="Visible">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0" Color="#C5262029"/>
+                        <GradientStop Offset="1" Color="#C518121c"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="16" Color="#110E12"/>
+            </Border.Effect>
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock x:Name="StatusTextBlock" Text="Проверка обновлений..." TextWrapping="Wrap" FontFamily="Bahnschrift" HorizontalAlignment="Center" FontSize="20" Margin="0 0 0 10" Foreground="White"/>
+                <ProgressBar IsIndeterminate="True" HorizontalAlignment="Center" Height="20" Width="350" VerticalAlignment="Center" Margin="0 0 0 4"/>
+            </StackPanel>
+        </Border>
+            
+    </Grid>
+</Window>
